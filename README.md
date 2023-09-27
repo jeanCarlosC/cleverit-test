@@ -172,7 +172,7 @@ Todos los endpoints reciben las siguientes cabeceras:
 - **URL:** `/tasks`
 - **Método:** `POST`
 - **Cuerpo(json):**
-    - **tittle(str, requerido):** Título de la tarea.
+    - **title(str, requerido):** Título de la tarea.
     - **expiration_date(str, requerido):** Fecha de expiración de la tarea.
     - **status(str, requerido):** Estado de la tarea. Puede ser `TODO`, `IN_PROGRESSS` o `DONE`.
     - **description(str, requerido):** Descripción de la tarea.
@@ -186,7 +186,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea creada correctamente",
         "data": {
             "id": 1,
-            "tittle": "Tarea 1",
+            "title": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "user_id": null
@@ -219,7 +219,7 @@ Todos los endpoints reciben las siguientes cabeceras:
 - **URL:** `/tasks/<id>`
 - **Método:** `PUT`
 - **Cuerpo(json):**
-    - **tittle(str, opcional):** Título de la tarea.
+    - **title(str, opcional):** Título de la tarea.
     - **expiration_date(str, opcional):** Fecha de expiración de la tarea.
     - **status(str, opcional):** Estado de la tarea. Puede ser `TODO`, `IN_PROGRESSS` o `DONE`.
     - **description(str, opcional):** Descripción de la tarea.
@@ -232,7 +232,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea actualizada correctamente",
         "data": {
             "id": 1,
-            "tittle": "Tarea 1",
+            "title": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "created_at": "2023-09-26 19:07:40",
@@ -282,7 +282,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "data": [
             {
                 "id": 1,
-                "tittle": "Tarea 1",
+                "title": "Tarea 1",
                 "expiration_date": "2023-01-10",
                 "status": "TODO",
                 "user_id": null
@@ -291,7 +291,7 @@ Todos los endpoints reciben las siguientes cabeceras:
             },
             {
                 "id": 2,
-                "tittle": "Tarea 2",
+                "title": "Tarea 2",
                 "expiration_date": "2023-01-10",
                 "status": "TODO",
                 "user_id": null
@@ -326,7 +326,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea obtenida correctamente",
         "data": {
             "id": 1,
-            "tittle": "Tarea 1",
+            "title": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "user_id": null
