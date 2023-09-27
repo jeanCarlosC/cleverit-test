@@ -1,9 +1,9 @@
 # cleverit-test
-desafio de cleverit
+Desafío de cleverit
 
 ### Descripción
 
-API de gestion de tareas.
+API de gestión de tareas.
 
 ### Construcción 🛠️
 * **Tipo:** API Rest
@@ -17,7 +17,7 @@ API de gestion de tareas.
 ### Información sobre estructura del proyecto 📖
 
 #### Clean Architecture
-Se ha utilizado la arquitectura Clean Architecture para el desarrollo del proyecto. para garantizar la separación de preocupaciones, la escalabilidad y la facilidad de mantenimiento.
+Se ha utilizado la arquitectura **Clean Architecture** para el desarrollo del proyecto ara garantizar la separación de preocupaciones, la escalabilidad y la facilidad de mantenimiento.
 
 #### Principios de la Clean Architecture
 
@@ -37,14 +37,14 @@ El proyecto está organizado de la siguiente manera:
 - `src/frameworks`: Contiene la implementación de los frameworks y dependencias externas.
 - `src/frameworks/db`: Contiene la implementación de la base de datos.
 - `src/frameworks/http`: Contiene la implementación del framework Flask, estructura de respuesta y manejador de errores.
-- `src/tasks`: Contiene la implementación de logica de negocio e interfaces.
+- `src/tasks`: Contiene la implementación de lógica de negocio e interfaces de las tareas.
 - `src/tasks/usecases`: Contiene la implementación de los casos de uso donde se encuentra la lógica de negocio.
 - `src/tasks/entities`: Contiene la implementación de las entidades (modelos).
 - `src/tasks/repositories`: Contiene la implementación de los repositorios, que en este caso es el que tiene interacción con la base de datos.
 - `src/tasks/http`: Contiene la implementación de los controladores, donde se encuentra la lógica de los endpoints.
 - `src/tasks/http/fields`: Contiene la implementación de los campos que se usan en los endpoints.
-- `src/tasks/http/validators`: Contiene la implementación de los validadores para reglas de negcio.
-- `src/utils`: Contiene utilidades que se usan en la aplicación. En este caso se usa para la implementación del patron Chain of Responsibility (`utils/create_validator_chain` y `utils/validator_base`), para funciones de utilidad (`utils/functions`), y para la implementación de la clase de validar campos (`utils/input_validator`).
+- `src/tasks/http/validators`: Contiene la implementación de los validadores para reglas de negocio.
+- `src/utils`: Contiene utilidades que se usan en la aplicación. En este caso se usa para la implementación del patrón **Chain of Responsibility** (`utils/create_validator_chain` y `utils/validator_base`), para funciones de utilidad (`utils/functions`), y para la implementación de la clase de validar campos (`utils/input_validator`).
 - `src/main.py`: Contiene la inicialización de dependencias para luego iniciar la aplicación.
 
 
@@ -63,7 +63,7 @@ El proyecto está organizado de la siguiente manera:
 - Ejecutar `docker exec -it my-sqlite-container touch config/tasks.db` para crear la base de datos.
 - Ejecutar `docker exec -it api-tasks python create_db.py` para crear las tablas de la base de datos necesarias.
 
-### Información de como realizar las peticiones al API 📖
+### Información de cómo realizar las peticiones al API 📖
 
 El API se encuentra disponible en la URL `http://localhost:8080`. Para poder hacer uso de los endpoints se debe enviar un token de autorización en el header de la petición, el token se obtiene al hacer login en el endpoint `/login` con el usuario `admin` y la contraseña `admin`.
 
@@ -172,7 +172,7 @@ Todos los endpoints reciben las siguientes cabeceras:
 - **URL:** `/tasks`
 - **Método:** `POST`
 - **Cuerpo(json):**
-    - **title(str, requerido):** Título de la tarea.
+    - **tittle(str, requerido):** Título de la tarea.
     - **expiration_date(str, requerido):** Fecha de expiración de la tarea.
     - **status(str, requerido):** Estado de la tarea. Puede ser `TODO`, `IN_PROGRESSS` o `DONE`.
     - **description(str, requerido):** Descripción de la tarea.
@@ -186,7 +186,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea creada correctamente",
         "data": {
             "id": 1,
-            "title": "Tarea 1",
+            "tittle": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "user_id": null
@@ -219,7 +219,7 @@ Todos los endpoints reciben las siguientes cabeceras:
 - **URL:** `/tasks/<id>`
 - **Método:** `PUT`
 - **Cuerpo(json):**
-    - **title(str, opcional):** Título de la tarea.
+    - **tittle(str, opcional):** Título de la tarea.
     - **expiration_date(str, opcional):** Fecha de expiración de la tarea.
     - **status(str, opcional):** Estado de la tarea. Puede ser `TODO`, `IN_PROGRESSS` o `DONE`.
     - **description(str, opcional):** Descripción de la tarea.
@@ -232,7 +232,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea actualizada correctamente",
         "data": {
             "id": 1,
-            "title": "Tarea 1",
+            "tittle": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "created_at": "2023-09-26 19:07:40",
@@ -282,7 +282,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "data": [
             {
                 "id": 1,
-                "title": "Tarea 1",
+                "tittle": "Tarea 1",
                 "expiration_date": "2023-01-10",
                 "status": "TODO",
                 "user_id": null
@@ -291,7 +291,7 @@ Todos los endpoints reciben las siguientes cabeceras:
             },
             {
                 "id": 2,
-                "title": "Tarea 2",
+                "tittle": "Tarea 2",
                 "expiration_date": "2023-01-10",
                 "status": "TODO",
                 "user_id": null
@@ -326,7 +326,7 @@ Todos los endpoints reciben las siguientes cabeceras:
         "message": "Tarea obtenida correctamente",
         "data": {
             "id": 1,
-            "title": "Tarea 1",
+            "tittle": "Tarea 1",
             "expiration_date": "2023-01-10",
             "status": "TODO",
             "user_id": null

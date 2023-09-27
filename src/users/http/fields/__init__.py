@@ -13,6 +13,7 @@ input_create_user = [
         "field": "email",
         "type": str,
         "required": True,
+        "regex_type": "email",
         "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
     },
     {
@@ -46,6 +47,7 @@ input_update_user = [
         "field": "email",
         "type": str,
         "required": False,
+        "regex_type": "email",
         "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
     },
     {

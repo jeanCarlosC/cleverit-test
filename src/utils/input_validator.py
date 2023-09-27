@@ -1,6 +1,7 @@
 from functools import wraps
 from flask import request, jsonify
 from src.errors.report_api_error import ReportApiError
+import re
 
 
 class input_validator:
@@ -18,6 +19,8 @@ class input_validator:
                 field_type = rule["type"]
                 is_required = rule["required"]
                 options = rule["options"] if "options" in rule else None
+                regex = rule["regex"] if "regex" in rule else None
+                regex_type = rule["regex_type"] if "regex_type" in rule else None
                 if is_required and field not in data:
                     raise ReportApiError(
                         f"El campo {field} es requerido", status_code=422)
@@ -28,6 +31,9 @@ class input_validator:
                 if options and data[field] not in options:
                     raise ReportApiError(
                         f"El campo {field} debe ser uno de los siguientes valores: {options}", status_code=422)
+                if regex and regex_type and not re.match(regex, data[field]):
+                    raise ReportApiError(
+                        f"El campo {field} debe cumplir con el tipo {regex_type}", status_code=422)
 
             # Llamar a la función original si los datos son válidos
             return func(*args, **kwargs)
