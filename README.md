@@ -391,3 +391,21 @@ Todos los endpoints reciben las siguientes cabeceras:
         "data": {}
     }
     ```
+
+#### Para acceder a la base de datos desde el explorador
+- **URL:** `http://localhost:3000`
+das click al botón `open database` y seleccionas el archivo `tasks.db` y das click en `Open`.
+
+en la sección `Execute SQL` puedes ejecutar diferentes consultas hacia las tablas de la base de datos por ejemplo las siguientes:
+- **Listar usuarios**
+```
+SELECT * FROM users;
+```
+- **Listar tareas**
+```
+SELECT * FROM tasks;
+```
+- **Listar tareas con usuario**
+```
+SELECT t.*, u.username FROM tasks t LEFT JOIN users u ON t.user_id = u.id;
+```
