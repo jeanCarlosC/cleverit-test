@@ -1,0 +1,5 @@
+flask==2.2.5
+alembic==1.7.5
+flasgger ==0.9.5
+flask-jwt-extended==4.2.3
+bcrypt==3.2.0

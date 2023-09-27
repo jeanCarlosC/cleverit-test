@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  api-tasks:
+    build: .
+    container_name: ${DOCKER_SERVICE_API_NAME}
+    env_file:
+      - .env
+    ports:
+      - ${DOCKER_PORT_API}:8080
+    volumes:
+      - ./.:/app/
+    depends_on:
+      - db
+
+  db:
+    image: linuxserver/sqlitebrowser
+    container_name: ${DOCKER_SERVICE_DB_NAME}
+    volumes:
+      - ./data:/config
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    ports:
+      - 3000:3000
+      - 3001:3001
+    restart: unless-stopped

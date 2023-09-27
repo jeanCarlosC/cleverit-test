@@ -1,0 +1,161 @@
+### Realizar el login en la API.
+GET http://localhost:8080/v1/login
+Content-Type: application/json
+{
+    "username": "admin",
+    "password": "admin"
+}
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Usuario ingresado correctamente",
+    "data": {
+        "user": {
+            "id": 1,
+            "username": "user1",
+            "email": "user1@gmail.com",
+            "first_name": "user1",
+            "last_name": "last name",
+            "is_active": 1,
+            "created_at": "2023-09-26 19:07:40",
+            "updated_at": null
+        },
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTgxODUxMSwianRpIjoiNWNhNGZlZTEtMTk2YS00ZjE0LTgyYzEtMWNkZjE3ZjM4MGViIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MSwidXNlcm5hbWUiOiJqZWFuIiwiZW1haWwiOiJjdWFkcm9zamVhbjI2QGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJKZWFuIENhcmxvcyIsImxhc3RfbmFtZSI6IkN1YWRyb3MiLCJpc19hY3RpdmUiOjEsImNyZWF0ZWRfYXQiOiIyMDIzLTA5LTI3IDEyOjA3OjQwIiwidXBkYXRlZF9hdCI6bnVsbH0sIm5iZiI6MTY5NTgxODUxMSwiZXhwIjoxNjk1ODE4ODExfQ.fsz1UDOiZv9la9UCgT8GPyRHN9mFyj_T-bhXsrMc92U"
+    }
+}
+
+### Crear un usuario.
+POST http://localhost:8080/v1/users
+Content-Type: application/json
+{
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "first_name": "user1",
+    "last_name": "last name",
+    "password": "123456",
+    "is_active": 1
+}
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Usuario creado correctamente",
+    "data": {
+        "id": 1,
+        "username": "user1",
+        "email": "user1@gmail.com",
+        "first_name": "user1",
+        "last_name": "last name",
+        "is_active": 1,
+        "created_at": "2023-09-26 20:14:10",
+        "updated_at": null
+    }
+}
+
+
+### Obtener Tarea por ID.
+GET http://localhost:8080/v1/tasks/1
+Authorization: Bearer access_token
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Tarea obtenida correctamente",
+    "data": {
+        "id": 1,
+        "title": "Tarea 1",
+        "expiration_date": "2023-01-10",
+        "status": "TODO",
+        "user_id": 1,
+        "created_at": "2023-09-26 19:07:40",
+        "updated_at": null
+    }
+}
+
+### Obtener todas las tareas.
+GET http://localhost:8080/v1/tasks
+Authorization: Bearer access_token
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Tareas obtenidas correctamente",
+    "data": [
+        {
+            "id": 1,
+            "title": "Tarea 1",
+            "expiration_date": "2023-01-10",
+            "status": "TODO",
+            "user_id": 1,
+            "created_at": "2023-09-26 19:07:40",
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "title": "Tarea 2",
+            "expiration_date": "2023-01-10",
+            "status": "TODO",
+            "user_id": 1,
+            "created_at": "2023-09-26 19:07:40",
+            "updated_at": null
+        }
+    ]
+}
+
+### Crear una tarea.
+POST http://localhost:8080/v1/tasks
+Content-Type: application/json
+Authorization: Bearer access_token
+{
+    "title":"Tarea 1",
+    "expiration_date":"2023-01-10",
+    "status":"TODO",
+    "user_id": 1
+}
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Tarea creada correctamente",
+    "data": {
+        "id": 1,
+        "title": "Tarea 1",
+        "expiration_date": "2023-01-10",
+        "status": "TODO",
+        "user_id": 1,
+        "created_at": "2023-09-26 19:07:40",
+        "updated_at": null
+    }
+}
+
+### Actualizar una tarea.
+PUT http://localhost:8080/v1/tasks/1
+Content-Type: application/json
+Authorization: Bearer access_token
+{
+    "title":"Tarea 1 - Actualizada",
+    "expiration_date":"2023-01-11",
+    "status":"IN_PROGRESS",
+    "user_id": 1
+}
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Tarea actualizada correctamente",
+    "data": {
+        "id": 1,
+        "title": "Tarea 1 - Actualizada",
+        "expiration_date": "2023-01-11",
+        "status": "IN_PROGRESS",
+        "user_id": 1,
+        "created_at": "2023-09-26 19:07:40",
+        "updated_at": "2023-09-26 19:12:23"
+    }
+}
+
+### Eliminar una tarea.
+DELETE http://localhost:8080/v1/tasks/1
+Authorization: Bearer access_token
+# ejemplo de respuesta
+{
+    "status": "Success",
+    "message": "Tarea eliminada correctamente",
+    "data": true
+}
+
